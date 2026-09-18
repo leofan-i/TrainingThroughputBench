@@ -5,101 +5,46 @@
 <style>
  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:#0d1117;color:#e6edf3}
  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 64px}
- h1{font-size:1.7rem;margin:.2em 0} .sub{color:#9da7b3;margin:.2em 0 1.4em}
- table{border-collapse:collapse;width:100%;font-size:.92rem}
- th,td{padding:9px 12px;border-bottom:1px solid #21262d;text-align:left;vertical-align:top}
+ h1{font-size:1.7rem;margin:.2em 0} .sub{color:#9da7b3;margin:.2em 0 1.6em}
+ h2.fam{font-size:1.25rem;margin:1.7em 0 .2em;padding-bottom:.15em;border-bottom:1px solid #30363d}
+ h3.mdl{font-size:1rem;color:#c9d1d9;margin:1.1em 0 .4em;font-family:ui-monospace,Menlo,Consolas,monospace}
+ table{border-collapse:collapse;width:100%;font-size:.92rem;margin-bottom:.3em}
+ th,td{padding:8px 12px;border-bottom:1px solid #21262d;text-align:left;vertical-align:top}
  th{color:#9da7b3;font-weight:600;border-bottom:2px solid #30363d}
  td.num,th.num{text-align:right;white-space:nowrap}
- td.model{font-weight:600} td.recipe{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;color:#c9d1d9}
- td.cost{font-weight:700;color:#3fb950}
- tr:hover td{background:#161b22}
- .foot{color:#8b949e;font-size:.8rem;margin-top:1.6em;line-height:1.5}
+ td.recipe{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;color:#c9d1d9}
+ td.cost{font-weight:700;color:#3fb950} tr:hover td{background:#161b22}
+ .foot{color:#8b949e;font-size:.8rem;margin-top:1.8em;line-height:1.5}
  code{background:#161b22;padding:1px 5px;border-radius:4px} a{color:#58a6ff}
 </style></head><body><div class="wrap">
 <h1>Training Throughput Bench</h1>
 <p class="sub">Best-known SFT training throughput per model &times; accelerator, with the exact recipe and cost. Higher tok/s/GPU and lower $/M&nbsp;tokens are better.</p>
-<table><thead><tr>
- <th>Model</th><th>Accelerator</th><th class="num">GPUs</th><th>Best recipe</th>
- <th class="num">tok/s/GPU</th><th class="num">$/M&nbsp;tokens</th>
-</tr></thead><tbody>
-      <tr>
-        <td class="model">GLM-5.2-744B-A40B</td>
-        <td>H100</td>
-        <td class="num">256</td>
-        <td class="recipe">TP4/PP8/CP1/EP32, mt8192, cpu-offload</td>
-        <td class="num">68</td>
-        <td class="num cost">$28.10</td>
-      </tr>
-      <tr>
-        <td class="model">GLM-5.2-744B-A40B</td>
-        <td>H200</td>
-        <td class="num">128</td>
-        <td class="recipe">TP4/PP4/CP1/EP32, mt8192, selective recompute, cpu-offload</td>
-        <td class="num">160</td>
-        <td class="num cost">$13.71</td>
-      </tr>
-      <tr>
-        <td class="model">GLM-5.2-744B-A40B</td>
-        <td>B200</td>
-        <td class="num">64</td>
-        <td class="recipe">TP4/PP2/CP4/EP32, mt12288, cpu-offload</td>
-        <td class="num">150</td>
-        <td class="num cost">$26.33</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-122B-A10B</td>
-        <td>H100</td>
-        <td class="num">48</td>
-        <td class="recipe">TP4/PP6/EP8, mt16384, flex dispatcher</td>
-        <td class="num">980</td>
-        <td class="num cost">$1.95</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-122B-A10B</td>
-        <td>H200</td>
-        <td class="num">32</td>
-        <td class="recipe">TP1/PP4/EP8, mt8192</td>
-        <td class="num">2345</td>
-        <td class="num cost">$0.94</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-122B-A10B</td>
-        <td>B200</td>
-        <td class="num">16</td>
-        <td class="recipe">TP1/PP4/EP4, mt8192</td>
-        <td class="num">2563</td>
-        <td class="num cost">$1.54</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-397B-A17B</td>
-        <td>H100</td>
-        <td class="num">128</td>
-        <td class="recipe">TP2/PP16/EP8, mt8192, cpu-offload</td>
-        <td class="num">307</td>
-        <td class="num cost">$6.23</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-397B-A17B</td>
-        <td>H200</td>
-        <td class="num">48</td>
-        <td class="recipe">TP2/PP6/EP8, cpu-offload</td>
-        <td class="num">305</td>
-        <td class="num cost">$7.22</td>
-      </tr>
-      <tr>
-        <td class="model">Qwen3.5-397B-A17B</td>
-        <td>B200</td>
-        <td class="num">64</td>
-        <td class="recipe">TP2/PP8/EP8, mt16384, vpp2</td>
-        <td class="num">1290</td>
-        <td class="num cost">$3.07</td>
-      </tr>
+<h2 class="fam">Qwen3.5</h2>
+<h3 class="mdl">Qwen3.5-122B-A10B</h3>
+<table><thead><tr><th>Accelerator</th><th class="num">GPUs</th><th>Best recipe</th><th class="num">tok/s/GPU</th><th class="num">$/M&nbsp;tokens</th></tr></thead><tbody>
+      <tr><td>H100</td><td class="num">48</td><td class="recipe">TP4/PP6/EP8, mt16384, flex dispatcher</td><td class="num">980</td><td class="num cost">$1.95</td></tr>
+      <tr><td>H200</td><td class="num">32</td><td class="recipe">TP1/PP4/EP8, mt8192</td><td class="num">2345</td><td class="num cost">$0.94</td></tr>
+      <tr><td>B200</td><td class="num">16</td><td class="recipe">TP1/PP4/EP4, mt8192</td><td class="num">2563</td><td class="num cost">$1.54</td></tr>
+</tbody></table>
+<h3 class="mdl">Qwen3.5-397B-A17B</h3>
+<table><thead><tr><th>Accelerator</th><th class="num">GPUs</th><th>Best recipe</th><th class="num">tok/s/GPU</th><th class="num">$/M&nbsp;tokens</th></tr></thead><tbody>
+      <tr><td>H100</td><td class="num">128</td><td class="recipe">TP2/PP16/EP8, mt8192, cpu-offload</td><td class="num">307</td><td class="num cost">$6.23</td></tr>
+      <tr><td>H200</td><td class="num">48</td><td class="recipe">TP2/PP6/EP8, cpu-offload</td><td class="num">305</td><td class="num cost">$7.22</td></tr>
+      <tr><td>B200</td><td class="num">64</td><td class="recipe">TP2/PP8/EP8, mt16384, vpp2</td><td class="num">1290</td><td class="num cost">$3.07</td></tr>
+</tbody></table>
+<h2 class="fam">GLM-5.2</h2>
+<h3 class="mdl">GLM-5.2-744B-A40B</h3>
+<table><thead><tr><th>Accelerator</th><th class="num">GPUs</th><th>Best recipe</th><th class="num">tok/s/GPU</th><th class="num">$/M&nbsp;tokens</th></tr></thead><tbody>
+      <tr><td>H100</td><td class="num">256</td><td class="recipe">TP4/PP8/CP1/EP32, mt8192, cpu-offload</td><td class="num">68</td><td class="num cost">$28.10</td></tr>
+      <tr><td>H200</td><td class="num">128</td><td class="recipe">TP4/PP4/CP1/EP32, mt8192, selective recompute, cpu-offload</td><td class="num">160</td><td class="num cost">$13.71</td></tr>
+      <tr><td>B200</td><td class="num">64</td><td class="recipe">TP4/PP2/CP4/EP32, mt12288, cpu-offload</td><td class="num">150</td><td class="num cost">$26.33</td></tr>
 </tbody></table>
 <p class="foot">
 <b>Workload.</b> fixed-shape SFT, 8192 tokens/sequence, global batch 128, bf16. <b>Measurement.</b> aggregate tokens/s/GPU over a 27-step window (steps 3-22).<br>
 <b>Cost.</b> <code>$/M&nbsp;tokens = (per-GPU $/hr) / (tok/s/GPU &times; 3600) &times; 10<sup>6</sup></code>.
 Per-GPU on-demand rates: H100 $6.88 (<a href="https://instances.vantage.sh/aws/ec2/p5.48xlarge">p5.48xlarge</a>), H200 $7.91 (<a href="https://instances.vantage.sh/aws/ec2/p5en.48xlarge">p5en.48xlarge</a>), B200 $14.24 (<a href="https://instances.vantage.sh/aws/ec2/p6-b200.48xlarge">p6-b200.48xlarge</a>). AWS EC2 on-demand, us-east-1, fetched 2026-09-18; prices change &mdash; recompute for your region/commitment.<br>
 Recipes are TP/PP/CP/EP parallelism plus packing (mt = max-tokens-per-GPU), recompute, offload, and dispatcher.
-Underlying data: <a href="data.json">data.json</a>.
+Underlying data: <a href="data.json">data.json</a>.<br>
+<b>Call for recipes.</b> Have a faster recipe, or a new model or accelerator? Open an issue or pull request with it and its tok/s/GPU on the same workload &mdash; we&rsquo;ll add it.
 </p>
 </div></body></html>

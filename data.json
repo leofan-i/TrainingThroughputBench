@@ -22,6 +22,7 @@
   },
   "leaderboard": [
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-122B-A10B",
       "accelerator": "H100",
       "gpus": 48,
@@ -30,6 +31,7 @@
       "usd_per_mtok": 1.95
     },
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-122B-A10B",
       "accelerator": "H200",
       "gpus": 32,
@@ -38,6 +40,7 @@
       "usd_per_mtok": 0.937
     },
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-122B-A10B",
       "accelerator": "B200",
       "gpus": 16,
@@ -46,6 +49,7 @@
       "usd_per_mtok": 1.544
     },
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-397B-A17B",
       "accelerator": "H100",
       "gpus": 128,
@@ -54,6 +58,7 @@
       "usd_per_mtok": 6.234
     },
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-397B-A17B",
       "accelerator": "H200",
       "gpus": 48,
@@ -62,6 +67,7 @@
       "usd_per_mtok": 7.216
     },
     {
+      "family": "Qwen3.5",
       "model": "Qwen3.5-397B-A17B",
       "accelerator": "B200",
       "gpus": 64,
@@ -70,6 +76,7 @@
       "usd_per_mtok": 3.068
     },
     {
+      "family": "GLM-5.2",
       "model": "GLM-5.2-744B-A40B",
       "accelerator": "H100",
       "gpus": 256,
@@ -78,6 +85,7 @@
       "usd_per_mtok": 28.1
     },
     {
+      "family": "GLM-5.2",
       "model": "GLM-5.2-744B-A40B",
       "accelerator": "H200",
       "gpus": 128,
@@ -86,6 +94,7 @@
       "usd_per_mtok": 13.71
     },
     {
+      "family": "GLM-5.2",
       "model": "GLM-5.2-744B-A40B",
       "accelerator": "B200",
       "gpus": 64,
