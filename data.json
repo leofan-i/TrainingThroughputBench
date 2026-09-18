@@ -18,7 +18,8 @@
       "B200": "https://instances.vantage.sh/aws/ec2/p6-b200.48xlarge"
     },
     "price_source": "AWS EC2 on-demand, us-east-1, fetched 2026-09-18",
-    "cost_formula": "usd_per_million_tokens = (per_GPU_usd_per_hr) / (tok_s_gpu * 3600) * 1e6"
+    "cost_formula": "usd_per_million_tokens = (per_GPU_usd_per_hr) / (tok_s_gpu * 3600) * 1e6",
+    "live_site": "https://leofan-i.github.io/TrainingThroughputBench/"
   },
   "leaderboard": [
     {
@@ -61,10 +62,10 @@
       "family": "Qwen3.5",
       "model": "Qwen3.5-397B-A17B",
       "accelerator": "H200",
-      "gpus": 48,
-      "recipe": "TP2/PP6/EP8, cpu-offload",
-      "tok_s_gpu": 304.58,
-      "usd_per_mtok": 7.216
+      "gpus": 128,
+      "recipe": "TP2/PP4/EP32, mt8192, no cpu-offload",
+      "tok_s_gpu": 535.65,
+      "usd_per_mtok": 4.103
     },
     {
       "family": "Qwen3.5",

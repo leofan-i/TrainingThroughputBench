@@ -16,7 +16,7 @@ Best-known **SFT training throughput** per model × accelerator, with the exact 
 | Accelerator | GPUs | Best recipe | tok/s/GPU | $/M tokens |
 |---|---|---|---|---|
 | H100 | 128 | `TP2/PP16/EP8, mt8192, cpu-offload` | 307 | $6.23 |
-| H200 | 48 | `TP2/PP6/EP8, cpu-offload` | 305 | $7.22 |
+| H200 | 128 | `TP2/PP4/EP32, mt8192, no cpu-offload` | 536 | $4.10 |
 | B200 | 64 | `TP2/PP8/EP8, mt16384, vpp2` | 1290 | $3.07 |
 
 ## GLM-5.2

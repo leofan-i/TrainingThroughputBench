@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Training Throughput Bench</title>
 <style>
  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:#0d1117;color:#e6edf3}
@@ -29,7 +28,7 @@
 <h3 class="mdl">Qwen3.5-397B-A17B</h3>
 <table><thead><tr><th>Accelerator</th><th class="num">GPUs</th><th>Best recipe</th><th class="num">tok/s/GPU</th><th class="num">$/M&nbsp;tokens</th></tr></thead><tbody>
       <tr><td>H100</td><td class="num">128</td><td class="recipe">TP2/PP16/EP8, mt8192, cpu-offload</td><td class="num">307</td><td class="num cost">$6.23</td></tr>
-      <tr><td>H200</td><td class="num">48</td><td class="recipe">TP2/PP6/EP8, cpu-offload</td><td class="num">305</td><td class="num cost">$7.22</td></tr>
+      <tr><td>H200</td><td class="num">128</td><td class="recipe">TP2/PP4/EP32, mt8192, no cpu-offload</td><td class="num">536</td><td class="num cost">$4.10</td></tr>
       <tr><td>B200</td><td class="num">64</td><td class="recipe">TP2/PP8/EP8, mt16384, vpp2</td><td class="num">1290</td><td class="num cost">$3.07</td></tr>
 </tbody></table>
 <h2 class="fam">GLM-5.2</h2>
@@ -42,7 +41,7 @@
 <p class="foot">
 <b>Workload.</b> fixed-shape SFT, 8192 tokens/sequence, global batch 128, bf16. <b>Measurement.</b> aggregate tokens/s/GPU over a 27-step window (steps 3-22).<br>
 <b>Cost.</b> <code>$/M&nbsp;tokens = (per-GPU $/hr) / (tok/s/GPU &times; 3600) &times; 10<sup>6</sup></code>.
-Per-GPU on-demand rates: H100 $6.88 (<a href="https://instances.vantage.sh/aws/ec2/p5.48xlarge">p5.48xlarge</a>), H200 $7.91 (<a href="https://instances.vantage.sh/aws/ec2/p5en.48xlarge">p5en.48xlarge</a>), B200 $14.24 (<a href="https://instances.vantage.sh/aws/ec2/p6-b200.48xlarge">p6-b200.48xlarge</a>). AWS EC2 on-demand, us-east-1, fetched 2026-09-18; prices change &mdash; recompute for your region/commitment.<br>
+Per-GPU on-demand rates: H100 $6.88 (<a href="https://instances.vantage.sh/aws/ec2/p5.48xlarge">p5.48xlarge</a>), H200 $7.91 (<a href="https://instances.vantage.sh/aws/ec2/p5en.48xlarge">p5en.48xlarge</a>), H200 $14.24 (<a href="https://instances.vantage.sh/aws/ec2/p6-b200.48xlarge">p6-b200.48xlarge</a>). AWS EC2 on-demand, us-east-1, fetched 2026-09-18; prices change &mdash; recompute for your region/commitment.<br>
 Recipes are TP/PP/CP/EP parallelism plus packing (mt = max-tokens-per-GPU), recompute, offload, and dispatcher.
 Underlying data: <a href="data.json">data.json</a>.<br>
 <b>Call for recipes.</b> Have a faster recipe, or a new model or accelerator? Open an issue or pull request with it and its tok/s/GPU on the same workload &mdash; we&rsquo;ll add it.
