@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "workload": "fixed-shape SFT, 8192 tokens/sequence, global batch 128, bf16",
+    "measurement": "aggregate tokens/s/GPU over a 27-step window (steps 3-22)",
+    "gpu_rates_usd_per_gpu_hr": {
+      "H100": 6.88,
+      "H200": 7.912,
+      "B200": 14.2416
+    },
+    "gpu_nodes": {
+      "H100": "p5.48xlarge",
+      "H200": "p5en.48xlarge",
+      "B200": "p6-b200.48xlarge"
+    },
+    "price_source": "AWS EC2 on-demand, us-east-1, fetched 2026-09-18",
+    "cost_formula": "usd_per_million_tokens = (per_GPU_usd_per_hr) / (tok_s_gpu * 3600) * 1e6"
+  },
+  "leaderboard": [
+    {
+      "model": "Qwen3.5-122B-A10B",
+      "accelerator": "H100",
+      "gpus": 48,
+      "recipe": "TP4/PP6/EP8, mt16384, flex dispatcher",
+      "tok_s_gpu": 980.13,
+      "usd_per_mtok": 1.95,
+      "delta_vs_baseline_pct": 149.3,
+      "baseline_tok_s_gpu": 393.16
+    },
+    {
+      "model": "Qwen3.5-122B-A10B",
+      "accelerator": "H200",
+      "gpus": 32,
+      "recipe": "TP1/PP4/EP8, mt8192",
+      "tok_s_gpu": 2345.2,
+      "usd_per_mtok": 0.937,
+      "delta_vs_baseline_pct": 31.9,
+      "baseline_tok_s_gpu": 1778.59
+    },
+    {
+      "model": "Qwen3.5-122B-A10B",
+      "accelerator": "B200",
+      "gpus": 16,
+      "recipe": "TP1/PP4/EP4, mt8192",
+      "tok_s_gpu": 2562.77,
+      "usd_per_mtok": 1.544,
+      "delta_vs_baseline_pct": 25.7,
+      "baseline_tok_s_gpu": 2038.24
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "accelerator": "H100",
+      "gpus": 128,
+      "recipe": "TP2/PP16/EP8, mt8192, cpu-offload",
+      "tok_s_gpu": 306.54,
+      "usd_per_mtok": 6.234,
+      "delta_vs_baseline_pct": 25.1,
+      "baseline_tok_s_gpu": 245.12
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "accelerator": "H200",
+      "gpus": 48,
+      "recipe": "TP2/PP6/EP8, cpu-offload",
+      "tok_s_gpu": 304.58,
+      "usd_per_mtok": 7.216,
+      "delta_vs_baseline_pct": 6.4,
+      "baseline_tok_s_gpu": 286.25
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "accelerator": "B200",
+      "gpus": 64,
+      "recipe": "TP2/PP8/EP8, mt16384, vpp2",
+      "tok_s_gpu": 1289.55,
+      "usd_per_mtok": 3.068,
+      "delta_vs_baseline_pct": 291.2,
+      "baseline_tok_s_gpu": 329.68
+    },
+    {
+      "model": "GLM-5.2-744B-A40B",
+      "accelerator": "H100",
+      "gpus": 256,
+      "recipe": "TP4/PP8/CP1/EP32, mt8192, cpu-offload",
+      "tok_s_gpu": 68.01,
+      "usd_per_mtok": 28.1,
+      "delta_vs_baseline_pct": 7.4,
+      "baseline_tok_s_gpu": 63.34
+    },
+    {
+      "model": "GLM-5.2-744B-A40B",
+      "accelerator": "H200",
+      "gpus": 128,
+      "recipe": "TP4/PP4/CP1/EP32, mt8192, selective recompute, cpu-offload",
+      "tok_s_gpu": 160.31,
+      "usd_per_mtok": 13.71,
+      "delta_vs_baseline_pct": 153.9,
+      "baseline_tok_s_gpu": 63.15
+    },
+    {
+      "model": "GLM-5.2-744B-A40B",
+      "accelerator": "B200",
+      "gpus": 64,
+      "recipe": "TP4/PP2/CP4/EP32, mt12288, cpu-offload",
+      "tok_s_gpu": 150.24,
+      "usd_per_mtok": 26.331,
+      "delta_vs_baseline_pct": 120.6,
+      "baseline_tok_s_gpu": 68.12
+    }
+  ]
+}
